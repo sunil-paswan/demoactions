@@ -23,7 +23,7 @@ jobs:
        password: ${{ secrets.DOCKER_PASSWORD }}
     - uses: mr-smithers-excellent/docker-build-push@v5
       with:
-       image: 891633128047.dkr.ecr.ap-south-1.amazonaws.com/project
+       image: /project
        tags: Latest
        registry: 891633128047.dkr.ecr.ap-south-1.amazonaws.com
       env:
