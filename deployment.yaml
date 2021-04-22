@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: music-player
-        image: 891633128047.dkr.ecr.ap-south-1.amazonaws.com/project:latest
+        image: 891633128047.dkr.ecr.ap-south-1.amazonaws.com/project:Latest
         ports:
         - containerPort: 80
 ---
