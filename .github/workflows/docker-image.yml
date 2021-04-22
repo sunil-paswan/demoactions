@@ -13,15 +13,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: mr-smithers-excellent/docker-build-push@v5
-      name: Build & push Docker image
-      with:
-       image: sunil6680/nginx-repo
-       tags: latest
-       registry: docker.io
-       dockerfile: Dockerfile
-       username: ${{ secrets.DOCKER_USERNAME }}
-       password: ${{ secrets.DOCKER_PASSWORD }}
-    - uses: mr-smithers-excellent/docker-build-push@v5
       with:
        image: project
        tags: Latest
@@ -29,3 +20,14 @@ jobs:
       env:
        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    - name: Deploy
+        uses: cancue/eks-action@v0.0.2
+        env:
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: $AWS_REGION
+          cluster_name: project-eks
+        with:
+          args: |
+            kubectl apply -f deployment.yaml
+            
