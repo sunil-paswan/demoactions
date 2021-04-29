@@ -1,0 +1,10 @@
+language: python
+env: 
+  - IMAGE=sunil6680/testing_with_bitbucket:latest
+services:
+  - docker
+before_install:
+- docker build -t ${IMAGE} .
+- docker login -u {docker_username} -p {docker_pass}
+- docker push ${IMAGE}
+  
