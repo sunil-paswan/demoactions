@@ -5,6 +5,6 @@ services:
   - docker
 before_install:
 - docker build -t ${IMAGE} .
-- docker login -u {docker_username} -p {docker_pass}
+- docker login -u ${docker_username} -p ${docker_pass}
 - docker push ${IMAGE}
   
